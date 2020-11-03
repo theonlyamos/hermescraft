@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  // content page
+  section.bgwhite.p-t-66.p-b-38
+    .container
+      .row
+        .col-md-4.p-b-30
+          .hov-img-zoom
+            img(src="/images/"+curPage.sections[0].images[0].name alt="IMG-ABOUT")
+        .col-md-8.p-b-30
+          h3.m-text26.p-t-15.p-b-16(style="color: "+curPage.sections[0].header.color)
+            | #{curPage.sections[0].header.data}
+          p.p-b-28color(style="color: "+curPage.sections[0].paragraphs[0].color)
+            | #{curPage.sections[0].paragraphs[0].data}
+          .bo13.p-l-29.m-l-9.p-b-10
+            p.p-b-11(style="color: "+curPage.sections[0].paragraphs[1].color)
+              | #{curPage.sections[0].paragraphs[1].data}
+            span.s-text7(style="color: "+curPage.sections[0].spans[0].color)
+              | - #{curPage.sections[0].spans[0].data}

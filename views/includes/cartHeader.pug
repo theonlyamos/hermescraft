@@ -1,0 +1,27 @@
+.header-wrapicon2
+  img.header-icon1.js-show-header-dropdown(src="/images/icons/icon-header-02.png" alt="ICON")
+  span.header-icons-noti #[span.cart-length= cartLength]
+  // Header cart noti
+  #cart-header.header-cart.header-dropdown
+    ul.header-cart-wrapitem
+      each item in cart
+        li.header-cart-item
+          .header-cart-item-img(onclick="window.location.href='/cart/remove?item="+item.id+"'" title="remove item")
+            img(src="/images/products/"+item.image alt="IMG")
+          .header-cart-item-txt
+            a.header-cart-item-name(href="#")
+              | #{item.name}
+            span.header-cart-item-info
+              | #{item.quantity} x $#{item.price}
+
+    .header-cart-total
+      | Total: $#[span.cart-total #{cartTotal.toFixed(2)}]
+    .header-cart-buttons
+      .header-cart-wrapbtn
+        // Button
+          a.flex-c-m.size1.bg1.bo-rad-20.hov1.s-text1.trans-0-4(href="/cart")
+            | View Cart
+      .header-cart-wrapbtn
+        // Button
+        a.flex-c-m.size1.bg1.bo-rad-20.hov1.s-text1.trans-0-4(href="/cart")
+          | View Cart

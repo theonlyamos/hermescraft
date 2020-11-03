@@ -1,0 +1,9 @@
+nav.menu
+  ul.main_menu
+    each page in pages
+      if (page.name == curPage.name)
+        li.sale-noti
+          a(href=page.path) #{page.name} 
+      else
+        li
+          a(href=page.path) #{page.name} 

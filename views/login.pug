@@ -1,0 +1,40 @@
+extends auth_layout
+
+block content
+  section.bg-light.p-t-66.p-b-60
+    .container
+      .d-flex.justify-content-center.mb-5
+        a(href="/")
+            img(src="/images/icons/hermescraft-2.png" alt="Hermescraft Logo" style="width: 120px; height: 120px;object-fit: contain")
+      .row.d-flex.justify-content-center
+        .col-md-4.bg-dark.pb-3.rounded
+          h3.text-white.text-center.py-4
+            b Login Form
+          form.bg-secondary.p-4.rounded(action="/login" method="POST")
+            .form-group
+              label.text-white(for="username") Email Address
+              .input-group
+                .input-group-prepend
+                  span.input-group-text @
+                input.form-control(type="email" name="username" placeholder="" required)
+            .form-group.mb-0
+              label.text-white(for="password") Password
+              .input-group
+                .input-group-prepend
+                  span.input-group-text
+                    i.fa.fa-lock
+                input.form-control(type="password" name="password" placeholder="" minlength=6  required)
+            .d-flex.justify-content-end
+              a.text-warning(href="/reset_password" style="font-size: 12px")
+                b Forgot Password?
+            .custom-control.custom-switch
+              input#remember.input.custom-control-input(type="checkbox" name="remember")
+              label.custom-control-label.text-white(for="remember" style="font-size: 12px") Remember Me
+            .d-flex.mt-2.justify-content-center
+              button.btn.btn-dark.btn-lg.btn-block(type="submit") Login
+            .mt-2.text-center
+              small.text-white.d-flex.justify-content-between
+                span Not a member yet? 
+                a.text-light(href="/register" style="font-size: 100%")
+                  b #[i.fa.fa-user-plus.fa-fw]
+                    | Register

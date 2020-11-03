@@ -1,0 +1,365 @@
+extends home_layout
+
+block content
+  .container1-page
+    // Slide1
+    section.slide1.rs1-slick1
+      .wrap-slick1
+        .slick1
+          each carousel in curPage.carousel
+            .item-slick1.item1-slick1(style="background-image: url(images/"+carousel.background.name+");")
+              .wrap-content-slide1.size24.flex-col-c-m.p-l-15.p-r-15.p-t-120.p-b-170
+                h2.caption1-slide1.xl-text3.t-center.bo15.p-b-3.animated.visible-false.m-b-25(data-appear="fadeInUp" style="color: "+carousel.header.color)
+                  | #{carousel.header.data}
+                span.caption2-slide1.m-text27.t-center.animated.visible-false.m-b-30(data-appear="fadeInDown" style="color: "+carousel.description.color)
+                  |#{carousel.description.data}
+                .wrap-btn-slide1.w-size1.animated.visible-false(data-appear="zoomIn")
+                  // Button
+                  a.flex-c-m.size2.bo-rad-23.s-text2.bgwhite.hov1.trans-0-4(href=carousel.link.path style="color: "+carousel.link.text.color)
+                    | #{carousel.link.text.data}
+    // Banner
+    section.banner.bgwhite.p-t-58.p-b-40
+      .container
+        .sec-title.p-b-22
+          h3.m-text5.t-center
+            | #{curPage.sections[0].header.data}
+        .row
+          each category in categories
+            .col-sm-10.col-md-8.col-lg-4.m-l-r-auto
+              // block1
+              .block1.hov-img-zoom.pos-relative.m-b-30
+                img(src="images/"+category.image.name alt="IMG-BANNER")
+                .block1-wrapbtn.w-size2
+                  // Button
+                  a.flex-c-m.m-text2.text-center.bg3.hov1.trans-0-4(href="#")
+                    | #{category.link.text.data}
+    
+    // Our product
+    section.bgwhite.p-t-58.p-b-58
+      .container
+        .sec-title.p-b-22
+          h3.m-text5.t-center
+            | #{curPage.sections[1].header.data}
+        // Tab01
+        .tab01
+          // Nav tabs
+          //ul.nav.nav-tabs(role="tablist")
+            li.nav-item
+              a.nav-link.active(data-toggle="tab" href="#best-seller" role="tab") Trending
+          // Tab panes
+          .tab-content.p-t-35
+            // -
+            #best-seller.tab-pane.fade.show.active(role="tabpanel")
+              .row
+                each product in products
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative
+                        img(src="images/products/"+product.images[0].name alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4(style='cursor: pointer' onclick="window.location.href='/shop/product/"+product._id+"'")
+                          //a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4(data-product=product._id)
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | #{product.name}
+                        span.block2-price.m-text6.p-r-5
+                          | $#{parseFloat(product.price).toFixed(2)}
+                        //
+                          span.block2-oldprice.m-text7.p-r-5
+                            | $#{parseFloat(product.price).toFixed(2)}
+                          span.block2-newprice.m-text8.p-r-5
+                            | $15.90
+                //Products
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative.block2-labelnew
+                        img(src="images/products/Cochlea_Implant.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | Cochlea Implant
+                        span.block2-price.m-text6.p-r-5
+                          | $75.00
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative
+                        img(src="images/products/Wheelchair.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | Wheelchair
+                        span.block2-price.m-text6.p-r-5
+                          | $92.50
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative
+                        img(src="images/products/Stethoscope.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | Stethoscope
+                        span.block2-price.m-text6.p-r-5
+                          | $165.90
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative.block2-labelsale
+                        img(src="images/products/Clutches.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | Clutches
+                        span.block2-price.m-text6.p-r-5
+                          | $75.00
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative
+                        img(src="images/products/Game_Pad_White.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | GamePad
+                        span.block2-price.m-text6.p-r-5
+                          | $75.00
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative
+                        img(src="images/products/Laptop.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | Laptop
+                        span.block2-price.m-text6.p-r-5
+                          | $92.50
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                    // Block2
+                    .block2
+                      .block2-img.wrap-pic-w.of-hidden.pos-relative
+                        img(src="images/products/Headphone_Black.png" alt="IMG-PRODUCT")
+                        .block2-overlay.trans-0-4
+                          a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                            i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                            i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                          .block2-btn-addcart.w-size1.trans-0-4
+                            // Button
+                            button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                              | Add to Cart
+                      .block2-txt.p-t-20.text-center
+                        a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                          | Headphone
+                        span.block2-price.m-text6.p-r-5
+                          | $165.90
+                  .col-sm-6.col-md-4.col-lg-3.p-b-50
+                  // Block2
+                  .block2
+                    .block2-img.wrap-pic-w.of-hidden.pos-relative
+                      img(src="images/products/Nose_Mask.png" alt="IMG-PRODUCT")
+                      .block2-overlay.trans-0-4
+                        a.block2-btn-addwishlist.hov-pointer.trans-0-4(href="#")
+                          i.icon-wishlist.icon_heart_alt(aria-hidden="true")
+                          i.icon-wishlist.icon_heart.dis-none(aria-hidden="true")
+                        .block2-btn-addcart.w-size1.trans-0-4
+                          // Button
+                          button.flex-c-m.size1.bg4.bo-rad-23.hov1.s-text1.trans-0-4
+                            | Add to Cart
+                    .block2-txt.p-t-20.text-center
+                      a.block2-name.dis-block.s-text3.p-b-5(href="product-detail.html")
+                        | Nose Mask
+                      span.block2-oldprice.m-text7.p-r-5
+                        | $29.50
+                      span.block2-newprice.m-text8.p-r-5
+                        | $15.90
+
+    // Banner2
+    .banner2.bg5.p-t-55.p-b-55.bg-img1(style="background-image: url(images/"+curPage.sections[2].background.name+");")
+      .container
+        .flex-w.flex-r-m.flex-c-xl
+          .p-t-15.p-b-15.w-size28
+            .bgwhite.hov-img-zoom.pos-relative.p-b-20per-ssm
+              img(src="images/"+curPage.sections[2].images[0].name alt="IMG-BANNER")
+              .ab-t-l.sizefull.flex-col-c-b.p-l-15.p-r-15.p-b-20
+                .t-center
+                  a.dis-block.s-text3.p-b-5(href=curPage.sections[2].links[0].path)
+                    | #{curPage.sections[2].links[0].text.data}
+                  span.block2-oldprice.m-text7.p-r-5
+                    | $#{curPage.sections[2].spans[0].data}
+                  span.block2-newprice.m-text8
+                    | $#{curPage.sections[2].spans[1].data}
+                .flex-c-m.p-t-44.p-t-30-xl
+                  .flex-col-c-m.size3.bo1.m-l-5.m-r-5
+                    span.m-text10.p-b-1.days
+                      | #{curPage.sections[2].spans[2].data}
+                    span.s-text5
+                      | #{curPage.sections[2].spans[3].data}
+                  .flex-col-c-m.size3.bo1.m-l-5.m-r-5
+                    span.m-text10.p-b-1.hours
+                      | #{curPage.sections[2].spans[4].data}
+                    span.s-text5
+                      | #{curPage.sections[2].spans[5].data}
+                  .flex-col-c-m.size3.bo1.m-l-5.m-r-5
+                    span.m-text10.p-b-1.minutes
+                      | #{curPage.sections[2].spans[6].data}
+                    span.s-text5
+                      | #{curPage.sections[2].spans[7].data}
+                  .flex-col-c-m.size3.bo1.m-l-5.m-r-5
+                    span.m-text10.p-b-1.seconds
+                      | #{curPage.sections[2].spans[8].data}
+                    span.s-text5
+                      | #{curPage.sections[2].spans[9].data}
+    
+    // Shipping
+    section.shipping.bgwhite.p-t-62.p-b-46
+      .flex-w.p-l-15.p-r-15
+        .flex-col-c.w-size5.p-l-15.p-r-15.p-t-16.p-b-15.respon1
+          h4.m-text12.t-center
+            | Free Delivery Worldwide
+          a.s-text11.t-center(href="#")
+            | Click here for more info
+        .flex-col-c.w-size5.p-l-15.p-r-15.p-t-16.p-b-15.bo2.respon2
+          h4.m-text12.t-center
+            | 30 Days Return
+          span.s-text11.t-center
+            | Simply return it within 30 days for an exchange.
+        .flex-col-c.w-size5.p-l-15.p-r-15.p-t-16.p-b-15.respon1
+          h4.m-text12.t-center
+            | Store Opening
+          span.s-text11.t-center
+            | Shop open from Monday to Sunday
+    // Footer
+    footer.bg6.p-t-45.p-b-43.p-l-65.p-r-65.p-lr-0-xl1
+      .flex-w.p-b-90
+        .w-size6.p-t-30.p-l-15.p-r-15.respon6
+          h4.s-text12.p-b-30
+            | GET IN TOUCH
+          ul
+            li.p-b-9
+              a.s-text7(href="tel:+233557821030")
+                | #[i.fa.fa-phone] +233557821030
+            li.p-b-9
+              a.s-text7(href="tel:+233557821030")
+                | #[i.fa.fa-phone] +233557821030
+            li.p-b-9
+              a.s-text7(href="mailto:info@hermescraft.com")
+                | #[i.fa.fa-envelope] info@hermescraft.com
+        .w-size7.p-t-30.p-l-15.p-r-15.respon7
+          h4.s-text12.p-b-30
+            | Categories
+          ul
+            li.p-b-9
+              a.s-text7(href="#")
+                | Disability
+            li.p-b-9
+              a.s-text7(href="#")
+                | Electronics
+            li.p-b-9
+              a.s-text7(href="#")
+                | Medical
+        .w-size7.p-t-30.p-l-15.p-r-15.respon7
+          h4.s-text12.p-b-30
+            | Links
+          ul
+            li.p-b-9
+              a.s-text7(href="#")
+                | Shop
+            li.p-b-9
+              a.s-text7(href="#")
+                | About Us
+            li.p-b-9
+              a.s-text7(href="#")
+                | Contact Us
+        .w-size7.p-t-30.p-l-15.p-r-15.respon7
+          h4.s-text12.p-b-30
+            | Help
+          ul
+            li.p-b-9
+              a.s-text7(href="#")
+                | Returns
+            li.p-b-9
+              a.s-text7(href="#")
+                | Shipping
+            li.p-b-9
+              a.s-text7(href="#")
+                | FAQs
+        .w-size8.p-t-30.p-l-15.p-r-15.respon6
+          h4.s-text12.p-b-30
+            | Newsletter
+          form
+            .effect1.w-size9
+              input.s-text7.bg6.w-full.p-b-5(type="text" name="email" placeholder="email@example.com")
+              span.effect1-line
+            .w-size2.p-t-20
+              // Button
+              button.flex-c-m.size2.bg4.bo-rad-23.hov1.m-text3.trans-0-4
+                | Subscribe
+      .t-center.p-l-15.p-r-15
+        a(href="#")
+          img.h-size2(src="images/icons/paypal.png" alt="IMG-PAYPAL")
+        a(href="#")
+          img.h-size2(src="images/icons/visa.png" alt="IMG-VISA")
+        a(href="#")
+          img.h-size2(src="images/icons/mastercard.png" alt="IMG-MASTERCARD")
+        a(href="#")
+          img.h-size2(src="images/icons/express.png" alt="IMG-EXPRESS")
+        a(href="#")
+          img.h-size2(src="images/icons/discover.png" alt="IMG-DISCOVER")
+        .t-center.s-text8.p-t-20
+          | Copyright © <script>document.write(new Date().getFullYear())</script> All rights reserved.
+  // Back to top
+  #myBtn.btn-back-to-top.bg0-hov
+    span.symbol-btn-back-to-top
+      i.fa.fa-angle-double-up(aria-hidden="true")
+  // Container Selection1
+  #dropDownSelect1

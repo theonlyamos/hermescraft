@@ -1,0 +1,28 @@
+.header-cart.header-dropdown.p-0(style="width: 150px")
+  ul.header-cart-wrapitem
+    if (user)
+      li.header-cart-item.border-bottom
+        .header-cart-item-txt
+          a.header-cart-item-name.pl-3.pr-5.m-0(href="/user/profile")
+            | Profile
+      li.header-cart-item.border-bottom
+        .header-cart-item-txt
+          a.header-cart-item-name.pl-3.pr-5.m-0(href="/user/orders")
+            | Orders
+      li.header-cart-item.border-bottom
+        .header-cart-item-txt
+          a.header-cart-item-name.pl-3.pr-5.m-0(href="/user/settings")
+            | Settings
+      li.header-cart-item
+        .header-cart-item-txt
+          a.header-cart-item-name.pl-3.pr-5.m-0.text-danger(href="/logout")
+            | Logout
+    else
+      li.header-cart-item.border-bottom
+        .header-cart-item-txt
+          a.header-cart-item-name.pl-3.pr-5.m-0(href="/register")
+            | Register
+      li.header-cart-item
+        .header-cart-item-txt
+          a.header-cart-item-name.pl-3.pr-5.m-0(href="/login")
+            | Login

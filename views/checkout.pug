@@ -1,0 +1,110 @@
+extends layout
+
+block content
+  // Title Page
+  section.bg-title-page.p-t-40.p-b-50.flex-col-c-m.bg-dark
+    h2.l-text2.t-center
+      | Checkout
+  //Checkout
+  section.cart.bgwhite.p-t-70.p-b-100.ftco-section
+    .container
+      .row.justify-content-center
+        .col-xl-8.ftco-animate
+          form.billing-form(action="#")
+            h3.mb-4.billing-heading Billing Details
+            .row.align-items-end
+              .col-md-6
+                .form-group
+                  label(for="firstname") First Name
+                  input.form-control.border(type="text")
+              .col-md-6
+                .form-group
+                  label(for="lastname") Last Name
+                  input.form-control.border(type="text")
+              .w-100
+              .col-md-12
+                .form-group
+                  label(for="country") State / Country
+                  select.custom-select.w-100(name="country")
+              .w-100
+              .col-md-6
+                .form-group
+                  label(for="streetaddress") Street Address
+                  input.form-control.border(type="text" placeholder="House number and street name")
+              .col-md-6
+                .form-group
+                  input.form-control.border(type="text" placeholder="Appartment, suite, unit etc: (optional)")
+              .w-100
+              .col-md-6
+                .form-group
+                  label(for="towncity") Town / City
+                  input.form-control.border(type="text" placeholder="")
+              .col-md-6
+                .form-group
+                  label(for="postcodezip") Postcode / ZIP *
+                  input.form-control.border(type="text" placeholder="")
+              .w-100
+              .col-md-6
+                .form-group
+                  label(for="phone") Phone
+                  input.form-control.border(type="text" placeholder="")
+              .col-md-6
+                .form-group
+                  label(for="emailaddress") Email Address
+                  input.form-control.border(type="text" placeholder="")
+              .w-100
+              .col-md-12
+                .form-group.mt-4
+                  .radio
+                    label.mr-3
+                      input(type="radio" name="optradio")
+                      | Create an Account?
+                    label
+                      input(type="radio" name="optradio")
+                      | Ship to different address
+          
+          .row.mt-5.pt-3.d-flex
+            .col-md-6.d-flex
+              .cart-detail.cart-total.bg-light.p-3.p-md-4.w-100
+                h3.billing-heading.mb-4 Cart Total
+                p.d-flex.justify-content-between.mb-2
+                  span Subtotal
+                  span $#{cartTotal}
+                p.d-flex.justify-content-between.mb-2
+                  span Delivery
+                  span $0.00
+                p.d-flex.justify-content-between.mb-2
+                  span Discount
+                  span $3.00
+                p.d-flex.total-price.justify-content-between.mb-2
+                  span Subtotal
+                  span $17.60
+            .col-md-6
+              .cart-detail.bg-light.p-3.p-md-4
+                h3.billing-heading.mb-4 Payment Method
+                .form-group
+                  .col-md-12
+                    .radio
+                      label(for="")
+                        input.mr-2(type="radio" name="optradio")
+                        | Direct Bank Transfer
+                .form-group
+                  .col-md-12
+                    .radio
+                      label(for="")
+                        input.mr-2(type="radio" name="optradio")
+                        | Credit / Debit Card
+                .form-group
+                  .col-md-12
+                    .radio
+                      label(for="")
+                        input.mr-2(type="radio" name="optradio")
+                        | Paypal
+                .form-group
+                  .col-md-12
+                    .checkbox
+                      label(for="")
+                      input.mr-2(type="checkbox")
+                      | I have read and accept the terms and conditions 
+                p
+                  a.btn.btn-primary.py-3.px-4.w-100(href="#") Place an order

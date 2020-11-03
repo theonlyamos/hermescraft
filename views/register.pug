@@ -1,0 +1,66 @@
+extends auth_layout
+
+block content
+  section.bg-light.pt-4.p-b-60
+    .container
+      .d-flex.justify-content-center.mb-3
+        a(href="/")
+            img(src="/images/icons/hermescraft-1.png" alt="Hermescraft Logo" style="width: 120px; height: 120px;object-fit: contain")
+      .row.d-flex.justify-content-center
+        .col-md-8.bg-primary.pb-3.rounded
+          h3.text-white.text-center.py-4
+            b Join Us
+          form.bg-info.p-4.rounded(action="/register" method="POST")
+            .form-group.form-row
+              .col-md-6
+                label.text-white(for="first_name") First Name
+                .input-group
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-user
+                  input.form-control(type="text" name="first_name" required)
+              .col-md-6
+                label.text-white(for="last_name") Last Name
+                .input-group
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-user
+                  input.form-control(type="text" name="last_name" required)
+            .form-group.form-row
+              .col-md-6
+                label.text-white(for="username") Email Address
+                .input-group
+                  .input-group-prepend
+                    span.input-group-text @
+                  input.form-control(type="email" name="username" placeholder="" required)
+              .col-md-6
+                label.text-white(for="phone") Phone Number
+                .input-group
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-phone
+                  input.form-control(type="text" name="phone" placeholder="" required)
+            .form-group.form-row
+              .col-md-6
+                label.text-white(for="password") Password
+                .input-group
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-lock
+                  input.form-control(type="password" name="password" placeholder="" minlength=6  required)
+              .col-md-6
+                label.text-white(for="cpassword") Confirm Password
+                .input-group
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-lock
+                  input.form-control(type="password" name="cpassword" required)
+            .form-group.form-row.justify-content-end
+              .col-md-6
+                button.btn.btn-primary.btn-lg.btn-block(type="submit") Register
+                .mt-2.text-center
+                  small.text-white.d-flex.justify-content-between
+                    span Already a member? 
+                    a.text-dark(href="/login" style="font-size: 100%")
+                      b #[i.fa.fa-sign-out.fa-fw]
+                        | Login

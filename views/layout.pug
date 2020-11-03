@@ -1,0 +1,254 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    // ===============================================================================================
+    link(rel="icon" type="image/png" href="/images/icons/favicon.ico")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/fonts/elegant-font/html-css/style.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/animate/animate.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/slick/slick.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/vendor/noui/nouislider.min.css")
+    // ===============================================================================================
+    link(rel="stylesheet" type="text/css" href="/css/util.css")
+    link(rel="stylesheet" type="text/css" href="/css/main.css")
+    // ===============================================================================================
+  body.animsition
+    // Header
+    header.header1
+      // Header desktop
+      .container-menu-header
+        .topbar
+          .topbar-social
+            a.topbar-social-item.fa.fa-facebook(href="#")
+            a.topbar-social-item.fa.fa-instagram(href="#")
+            a.topbar-social-item.fa.fa-pinterest-p(href="#")
+            a.topbar-social-item.fa.fa-snapchat-ghost(href="#")
+            a.topbar-social-item.fa.fa-youtube-play(href="#")
+          span.topbar-child1
+            | Free shipping for standard order over $100
+          .topbar-child2
+            span.topbar-email
+              | fashe@example.com
+            .topbar-language.rs1-select2
+              select.selection-1(name="time")
+                option USD
+                option EUR
+        .wrap_header
+          // Logo
+          a.logo(href="/")
+            img(src="/images/icons/hermescraft-2.png" alt="IMG-LOGO")
+          // Menu
+          .wrap_menu
+            include includes/menu.pug
+          // Header Icon
+          .header-icons
+            .header-wrapicon2
+              img.header-icon1.js-show-header-dropdown(src="/images/icons/icon-header-01.png" alt="ICON")
+              // Header cart noti
+              include includes/userMenu.pug
+            span.linedivide1
+            include includes/cartHeader.pug
+      // Header Mobile
+      .wrap_header_mobile
+        // Logo moblie
+        a.logo-mobile(href="/")
+          img(src="/images/icons/hermescraft-2.png" alt="IMG-LOGO")
+        // Button show menu
+        .btn-show-menu
+          // Header Icon mobile
+          .header-icons-mobile
+            .header-wrapicon2
+              img.header-icon1.js-show-header-dropdown(src="/images/icons/icon-header-01.png" alt="ICON")
+              // Header cart noti
+              include includes/userMenu.pug
+            span.linedivide2
+            include includes/cartHeader.pug
+          .btn-show-menu-mobile.hamburger.hamburger--squeeze
+            span.hamburger-box
+              span.hamburger-inner
+      // Menu Mobile
+      .wrap-side-menu
+        nav.side-menu
+          ul.main-menu
+            li.item-topbar-mobile.p-l-20.p-t-8.p-b-8
+              span.topbar-child1
+                | Free shipping for standard order over $100
+            li.item-topbar-mobile.p-l-20.p-t-8.p-b-8
+              .topbar-child2-mobile
+                span.topbar-email
+                  | fashe@example.com
+                .topbar-language.rs1-select2
+                  select.selection-1(name="time")
+                    option USD
+                    option EUR
+            li.item-topbar-mobile.p-l-10
+              .topbar-social-mobile
+                a.topbar-social-item.fa.fa-facebook(href="#")
+                a.topbar-social-item.fa.fa-instagram(href="#")
+                a.topbar-social-item.fa.fa-pinterest-p(href="#")
+                a.topbar-social-item.fa.fa-snapchat-ghost(href="#")
+                a.topbar-social-item.fa.fa-youtube-play(href="#")
+            include includes/mobileMenu.pug
+            
+    // Title Page
+    if (curPage.banner)
+      section.bg-title-page.p-t-50.p-b-40.flex-col-c-m(style="background-image: url('/images/"+curPage.banner.name+"')")
+        h2.l-text2.t-center
+          | #{curPage.header}
+        if (curPage.subheader)
+          p.m-text13.t-center
+            | #{curPage.subheader}
+    else
+      section.bg-title-page.p-t-50.p-b-40.flex-col-c-m.bg-dark
+        h2.l-text2.t-center
+          | #{curPage.header}
+        if (curPage.subheader)
+          p.m-text13.t-center
+            | #{curPage.subheader}
+    
+    block content
+
+    // Footer
+    footer.bg6.p-t-45.p-b-43.p-l-45.p-r-45
+      .flex-w.p-b-90
+        .w-size6.p-t-30.p-l-15.p-r-15.respon3
+          h4.s-text12.p-b-30
+            | GET IN TOUCH
+          ul
+            li.p-b-9
+              a.s-text7(href="tel:+233557821030")
+                | #[i.fa.fa-phone] +233557821030
+            li.p-b-9
+              a.s-text7(href="tel:+233557821030")
+                | #[i.fa.fa-phone] +233557821030
+            li.p-b-9
+              a.s-text7(href="mailto:info@hermescraft.com")
+                | #[i.fa.fa-envelope] info@hermescraft.com
+          div
+            .flex-m.p-t-30
+              a.fs-18.color1.p-r-20.fa.fa-facebook(href="#")
+              a.fs-18.color1.p-r-20.fa.fa-instagram(href="#")
+              a.fs-18.color1.p-r-20.fa.fa-pinterest-p(href="#")
+              a.fs-18.color1.p-r-20.fa.fa-snapchat-ghost(href="#")
+              a.fs-18.color1.p-r-20.fa.fa-youtube-play(href="#")
+        .w-size7.p-t-30.p-l-15.p-r-15.respon4
+          h4.s-text12.p-b-30
+            | Categories
+          ul
+            li.p-b-9
+              a.s-text7(href="#")
+                | Disability
+            li.p-b-9
+              a.s-text7(href="#")
+                | Electronics
+            li.p-b-9
+              a.s-text7(href="#")
+                | Medical
+        .w-size7.p-t-30.p-l-15.p-r-15.respon4
+          h4.s-text12.p-b-30
+            | Links
+          ul
+            li.p-b-9
+              a.s-text7(href="#")
+                | Shop
+            li.p-b-9
+              a.s-text7(href="#")
+                | About Us
+            li.p-b-9
+              a.s-text7(href="#")
+                | Contact Us
+        .w-size7.p-t-30.p-l-15.p-r-15.respon4
+          h4.s-text12.p-b-30
+            | Help
+          ul
+            li.p-b-9
+              a.s-text7(href="#")
+                | Returns
+            li.p-b-9
+              a.s-text7(href="#")
+                | Shipping
+            li.p-b-9
+              a.s-text7(href="#")
+                | FAQs
+        .w-size8.p-t-30.p-l-15.p-r-15.respon3
+          h4.s-text12.p-b-30
+            | Newsletter
+          form
+            .effect1.w-size9
+              input.s-text7.bg6.w-full.p-b-5(type="text" name="email" placeholder="email@example.com")
+              span.effect1-line
+            .w-size2.p-t-20
+              // Button
+              button.flex-c-m.size2.bg4.bo-rad-23.hov1.m-text3.trans-0-4
+                | Subscribe
+      .t-center.p-l-15.p-r-15
+        a(href="#")
+          img.h-size2(src="/images/icons/paypal.png" alt="IMG-PAYPAL")
+        a(href="#")
+          img.h-size2(src="/images/icons/visa.png" alt="IMG-VISA")
+        a(href="#")
+          img.h-size2(src="/images/icons/mastercard.png" alt="IMG-MASTERCARD")
+        a(href="#")
+          img.h-size2(src="/images/icons/express.png" alt="IMG-EXPRESS")
+        a(href="#")
+          img.h-size2(src="/images/icons/discover.png" alt="IMG-DISCOVER")
+        .t-center.s-text8.p-t-20
+          | Copyright © <script>document.write(new Date().getFullYear())</script> All rights reserved.
+    // Back to top
+    #myBtn.btn-back-to-top.bg0-hov
+      span.symbol-btn-back-to-top
+        i.fa.fa-angle-double-up(aria-hidden="true")
+    // Container Selection
+    #dropDownSelect1
+    #dropDownSelect2
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js")
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/animsition/js/animsition.min.js")
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/bootstrap/js/popper.js")
+    script(type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js")
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/select2/select2.min.js")
+    script(type="text/javascript").
+      $(".selection-1").select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $('#dropDownSelect1')
+      });
+      $(".selection-2").select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $('#dropDownSelect2')
+      });
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/daterangepicker/moment.min.js")
+    script(type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js")
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/slick/slick.min.js")
+    script(type="text/javascript" src="/js/slick-custom.js")
+    // ===============================================================================================
+    script(type="text/javascript" src="/vendor/sweetalert/sweetalert.min.js")
+    
+    block scripts
+
+    // ===============================================================================================
+    script(src="/js/main.js")
