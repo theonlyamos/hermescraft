@@ -4,6 +4,7 @@ var Category = require('../models/category');
 const Cart = require('../models/cart');
 const Order = require('../models/order');
 const {stripeSecretKey} = require('../config');
+const { hermescraftUrl } = require('../config');
 const stripe = require('stripe')(stripeSecretKey)
 const shippingAllowedCountries = require('../allowed_shipping_countries.js');
 const cart = require('../models/cart');
@@ -96,8 +97,8 @@ router
       },
       allow_promotion_codes: true,
     // setup_future_usage: 'on_session',
-      success_url: 'http://localhost:3000/checkout/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'http://localhost:3000/cart',
+      success_url: `${hermescraftUrl}checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${hermescraftUrl}cart`,
     }
 
     if (req.user){
