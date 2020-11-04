@@ -77,6 +77,7 @@ router
 
       cart = await Cart.create(cart)
     }
+    console.log(cart)
     console.log(line_items)
     const paymentOptions = {
       amount: cartTotal * 100,

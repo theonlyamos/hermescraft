@@ -75,7 +75,7 @@ router
     }
 
     if (req.user){
-      let dbCart = await Cart.findOne({"user": req.user._id})
+      let dbCart = await Cart.findOne({"user": req.user._id, "status": "pending"})
       if (dbCart){
         dbCart.items = req.session.cart
         await dbCart.save()
