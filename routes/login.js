@@ -35,7 +35,7 @@ post(async(req, res, next)=>{
                 console.log(err)
                 return res.redirect('/login')
           }
-          let cart = await Cart.findOne({"user": req.user._id}).exec()
+          let cart = await Cart.findOne({"user": req.user._id, "status": "pending"})
           if (cart){
             req.session.cart = cart.items
           }
