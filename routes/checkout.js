@@ -78,8 +78,6 @@ router
 
       cart = await Cart.create(cart)
     }
-    console.log(cart)
-    console.log(line_items)
     const paymentOptions = {
       amount: cartTotal * 100,
       currency: 'usd',
@@ -98,7 +96,7 @@ router
       allow_promotion_codes: true,
     // setup_future_usage: 'on_session',
       success_url: `${hermescraftUrl}checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${hermescraftUrl}cart`,
+      cancel_url: `${hermescraftUrl}checkout/cancel?session_id={CHECKOUT_SESSION_ID}`,
     }
 
     if (req.user){
@@ -108,8 +106,13 @@ router
     const payment = await stripe.paymentIntents.create(paymentOptions)
     checkoutOptions.payment_intent = payment._id
     const session = await stripe.checkout.sessions.create(checkoutOptions)
-
+    const today = new Date();
+    let orderID = `${today.getFullYear()-2000}${today.getMonth()+1}${today.getDate()}`;
+    const todaysCount = await Order.countDocuments({orderID: {$regex: orderID}})
+    console.log('Count:',todaysCount)
+    orderID = `${orderID}-${todaysCount+1}`
     const newOrder = new Order({
+      orderID,
       stripe_id: session.id,
       items_count: Object.keys(cart.items).length,
       cart: cart._id,
@@ -142,8 +145,8 @@ route('/success')
 .get(async(req, res, next)=>{
   try {
     const session = await stripe.checkout.sessions.retrieve(req.query.session_id)
-    console.log(session)
-    const cart = await Cart.findByIdAndUpdate(session.client_reference_id, {$set: {staus: 'complete'}})
+    const cart = await Cart.findByIdAndUpdate(session.client_reference_id, {$set: {status: 'complete'}})
+    const payment = await stripe.paymentIntents.retrieve(session.payment_intent)
     const order = await Order.findOneAndUpdate({'stripe_id': session.id}, {
       $set: {
         discount: parseInt(session.total_details.amount_discount),
@@ -151,7 +154,10 @@ route('/success')
         subtotal: parseInt(session.amount_subtotal) / 100,
         total: parseInt(session.amount_total) / 100,
         payment_status: session.payment_status,
-        shipping: session.shipping
+        shipping: session.shipping,
+        billing: session.billing,
+        receipt_url: payment.charges.data[0].receipt_url,
+        status: 'complete'
       }
     })
 
@@ -174,6 +180,15 @@ route('/success')
 router.
 route('/cancel')
 .get(async(req, res, next)=>{
+  try{
+     const session = stripe.checkout.sessions.retrieve(req.query.session_id)
+     const order = await Order.findOneAndRemove({'stripe_id': session.id})
+
+  }
+  catch(error){
+    console.log(error)
+  }
+  req.session.error = true
   req.session.errMsg = "Payment cancelled by user"
   res.redirect('/shop')
 })

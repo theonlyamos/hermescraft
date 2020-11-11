@@ -4,5 +4,6 @@ module.exports = {
     'stripeSecretKey': process.env.HERMESCRAFT_STRIPE_SECRET_KEY,
     'stripePublicKey': process.env.HERMESCRAFT_STRIPE_PUBLIC_KEY,
     'googleApiKey': process.env.HERMESCRAFT_GOOGLE_API_KEY,
-    'hermescraftUrl': process.env.HERMESCRAFT_URL
+    'hermescraftUrl': process.env.HERMESCRAFT_URL,
+    'hermescraftAdminUrl': process.env.HERMESCRAFT_ADMIN_URL
 }

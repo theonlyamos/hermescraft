@@ -54,6 +54,7 @@ post(async(req, res, next)=>{
         res.redirect('/login')
     }
     catch(error){
+        console.log(error)
         console.log(Object.keys(error))
         req.session.error = true
         req.session.errMsg = "Error during registration"

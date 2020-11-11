@@ -6,6 +6,7 @@ mongoosePaginate.paginate.options = {
   limit: 12
 }
 const OrderSchema = new Schema({
+    orderID: {type: String},
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     cart: {type: Schema.Types.ObjectId,  ref: 'Cart'},
     customer_email: {type: String},
@@ -16,7 +17,10 @@ const OrderSchema = new Schema({
     subtotal: {type: Number},
     total: {type: Number},
     payment_status: {type: String, default: 'unpaid'},
-    shipping: {type: Object}
+    shipping: {type: Object},
+    billing: {type: Object},
+    receipt_url: {type: String},
+    status: {type: String, enum: ['pending', 'complete', 'cancelled'], default: 'pending'}
 },{timestamps: true});
 
 OrderSchema.plugin(mongoosePaginate);

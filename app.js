@@ -1,16 +1,13 @@
 var createError = require('http-errors');
 var express = require('express');
+var session = require('express-session')
+var FileStore = require('session-file-store')(session)
 var fileupload = require('express-fileupload');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport');
 var config = require('./config');
-const expressSession = require('express-session')({
-  secret: config.stripeSecretKey, 
-  resave: false,
-  saveUninitialized: false
-});
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -35,7 +32,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(expressSession)
+app.use(session({
+  secret: config.secretKey, 
+  resave: false,
+  saveUninitialized: false,
+  store: new FileStore()
+}))
 
 app.use(fileupload({
   preserveExtension: true,
