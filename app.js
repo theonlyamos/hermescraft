@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+const debug = require('./debugger');
 var express = require('express');
 var session = require('express-session')
 var FileStore = require('session-file-store')(session)
@@ -68,9 +69,9 @@ var connect = mongoose.connect(config.mongoUrI,
                                 });
 
 connect.then((db) => {
-  console.log('Connected to database');
+  debug.log('Connected to database');
 },(err) => {
-  console.log(err);
+  debug.error(err);
 })
 
 
