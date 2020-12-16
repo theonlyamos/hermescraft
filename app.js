@@ -53,6 +53,8 @@ passport.use(User.createStrategy())
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(debug.dblog);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/shop', productsRouter);
