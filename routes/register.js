@@ -48,14 +48,11 @@ post(async(req, res, next)=>{
         user = await User.findById(user._id)
         user.stripe_id = customer.id
         user = await user.save()
-        console.log(user)
 
         req.session.message = "Registration Successful"
         res.redirect('/login')
     }
     catch(error){
-        console.log(error)
-        console.log(Object.keys(error))
         req.session.error = true
         req.session.errMsg = "Error during registration"
         res.redirect('/register')
